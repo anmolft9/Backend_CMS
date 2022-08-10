@@ -12,7 +12,7 @@ This api endpoint is responsible for handling all the admin user related request
 
 All the Admin end points will follow the followig patterns `{rootUrl}/api/v1/admin-user`
 
-| # | PATH | METHOD | PRIVATE | DESCRIPTION
+| # | PATH | METHOD | PRIVATE | DESCRIPTION |
 
 | --| --- | -------| ------ | ------- |
 | 1. | `/` | POST | No | Recieves new admin data and create new admin in our databas. If admin user's email already exist, it will return error otherwise it will return success with the user info from database |

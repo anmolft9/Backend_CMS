@@ -12,6 +12,10 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
+//dbconnection
+import { dbConnection } from "./src/config/dbConfig.js";
+dbConnection();
+
 import adminUserRouter from "./src/routers/adminUserRouter.js";
 app.use("/api/v1/admin-user", adminUserRouter);
 

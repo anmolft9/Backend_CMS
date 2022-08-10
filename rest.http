@@ -14,7 +14,7 @@ Content-Type: application/json
     "password": "anmol",
     "phone": "04442333444",
     "address": "Queanbeyan",
-    "dob": "16/01/1995"
+    "dob": "1995-01-16"
 
 
 }

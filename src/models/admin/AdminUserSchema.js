@@ -6,13 +6,13 @@ const adminUserSchema = new mongoose.Schema(
       type: String,
       default: "inactive",
     },
-    fname: {
+    fName: {
       type: String,
       required: true,
       maxLength: [20, "Firstname cant be longer than 20 Characters"],
     },
 
-    lname: {
+    lName: {
       type: String,
       required: true,
       maxLength: [20, "LastName cant be longer than 20 Characters"],

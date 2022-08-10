@@ -13,7 +13,7 @@ app.use(helmet());
 app.use(express.json());
 
 import adminUserRouter from "./src/routers/adminUserRouter.js";
-app.use("api/v1/admin-user", adminUserRouter);
+app.use("/api/v1/admin-user", adminUserRouter);
 
 app.get("/", (req, res) => {
   res.json({

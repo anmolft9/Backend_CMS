@@ -41,3 +41,21 @@ export const verificationEmail = (emailData) => {
   };
   emailProcessor(emailBody);
 };
+export const userVerifiednotification = (emailData) => {
+  const emailBody = {
+    from: '"Anmol Store 👻" <test@example.com>', // sender address
+    to: emailData.email, // list of receivers
+    subject: "your acc has been verified ✔", // Subject line
+    text: `Hi ${emailData.fName}, your acc has been verified:login now ${process.env.ROOT_DOMAIN}`, // plain text body
+    html: `
+          <p>${emailData.fName}</p>
+          <br/>
+          <br/>
+          <p>Please follow the link to verify your email</p>
+          <br/>
+          <br/>
+          <p> <a href="${process.env.ROOT_DOMAIN}">Login<a/></p>q
+        `, // html body
+  };
+  emailProcessor(emailBody);
+};

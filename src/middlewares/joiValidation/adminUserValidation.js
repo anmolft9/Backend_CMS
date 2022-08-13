@@ -1,63 +1,44 @@
 import Joi from "joi";
+import {
+  ADDRESS,
+  DATE,
+  EMAIL,
+  FNAME,
+  LNAME,
+  PASSWORD,
+  PHONE,
+  validator,
+} from "./constant";
 
 export const newAdminUserValidation = (req, res, next) => {
-  try {
-    ///define rules
-    // console.log("check");
-    const schema = Joi.object({
-      fName: Joi.string().max(20).required(),
-      lName: Joi.string().max(20).required(),
-      email: Joi.string().email({ minDomainSegments: 2 }).required(),
-      password: Joi.string().max(100).required(),
-      phone: Joi.string().required(),
-      address: Joi.string(),
-      dob: Joi.date(),
-    });
-    //give data to the rules
-    const { error } = schema.validate(req.body);
-
-    if (error) {
-      error.status = "200";
-      return next(error);
-    }
-    next();
-  } catch (error) {
-    next(error);
-  }
+  ///define rules
+  // console.log("check");
+  const schema = Joi.object({
+    fName: FNAME.required(),
+    lName: LNAME.required(),
+    email: EMAIL.required(),
+    password: PASSWORD.required(),
+    phone: PHONE,
+    address: ADDRESS,
+    dob: DATE.allow("", null),
+  });
+  //give data to the rules
+  validator(schema, req, res, next);
 };
 
 export const emailVerificationValidation = (req, res, next) => {
-  try {
-    const schema = Joi.object({
-      email: Joi.string().email({ minDomainSegments: 2 }).required(),
-      emailValidationCode: Joi.string().max(100).required(),
-    });
+  const schema = Joi.object({
+    email: EMAIL.required(),
+    emailValidationCode: SHORTSTR.required(),
+  });
 
-    const { error } = schema.validate(req.body);
-    if (error) {
-      error.status = 200;
-      return next(error);
-    }
-    next();
-  } catch (error) {
-    next(error);
-  }
+  validator(schema, req, res, next);
 };
 
 export const loginValidation = (req, res, next) => {
-  try {
-    const schema = Joi.object({
-      email: Joi.string().email({ minDomainSegments: 2 }).required(),
-      password: Joi.string().max(100).required(),
-    });
-
-    const { error } = schema.validate(req.body);
-    if (error) {
-      error.status = 200;
-      return next(error);
-    }
-    next();
-  } catch (error) {
-    next(error);
-  }
+  const schema = Joi.object({
+    email: EMAIL.required(),
+    password: PASSWORD.required(),
+  });
+  validator(schema, req, res, next);
 };
